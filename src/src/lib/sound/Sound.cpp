@@ -12,6 +12,14 @@ void Sound::init() {
     pinModeEx(STATUS_BUZZER_PIN, OUTPUT);
     digitalWriteEx(STATUS_BUZZER_PIN, !STATUS_BUZZER_ON_STATE);
   #endif
+  #if STATUS_BUZZER > 100 || STATUS_BUZZER < 6000
+    pinModeEx(STATUS_BUZZER_PIN, OUTPUT);
+    digitalWriteEx(STATUS_BUZZER_PIN, !STATUS_BUZZER_ON_STATE);
+    setToneChannel(0);
+    tone(STATUS_BUZZER_PIN, 500, 200);
+    tone(STATUS_BUZZER_PIN, 1500, 200);
+    tone(STATUS_BUZZER_PIN, 1000, 200);
+  #endif
   ready = true;
 }
 

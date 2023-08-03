@@ -36,12 +36,12 @@
 #define AUX4_PIN                13               // Home SW for Axis2
 #define AUX5_PIN                1                // TX0 main USB, etc.
 #define AUX6_PIN                3                // RX0 main USB, etc.
-#define AUX7_PIN                23               // Limit SW, PPS, etc.
+#define AUX7_PIN                12               // Limit SW, PPS, etc.
 #define AUX8_PIN                25               // 1-Wire, Status LED, Reticle LED, Tone, etc.
 
 // Misc. pins
 #ifndef ONE_WIRE_PIN
-  #define ONE_WIRE_PIN          AUX8_PIN         // Default Pin for OneWire bus
+  #define ONE_WIRE_PIN          AUX6_PIN         // Default Pin for OneWire bus
 #endif
 
 // The PEC index sense is a logic level input, resets the PEC index on rising edge then waits for 60 seconds before allowing another reset
@@ -55,7 +55,7 @@
 #endif
 #define STATUS_LED_ON_STATE HIGH
 #ifndef STATUS_LED_PIN
-  #define STATUS_LED_PIN        12               // Default LED Anode (+)
+  #define STATUS_LED_PIN        AUX8_PIN               // Default LED Anode (+)
 #endif
 #ifdef MOUNT_LED_ON_STATE
   #undef MOUNT_LED_ON_STATE
@@ -63,17 +63,17 @@
 #define MOUNT_LED_ON_STATE      HIGH
 #define MOUNT_LED_PIN           STATUS_LED_PIN   // Default LED Anode (+)
 #ifndef RETICLE_LED_PIN
-  #define RETICLE_LED_PIN       AUX8_PIN         // Default LED Cathode (-)
+  #define RETICLE_LED_PIN       AUX13_PIN         // Default LED Cathode (-)
 #endif
 
 // For a piezo buzzer
 #ifndef STATUS_BUZZER_PIN
-  #define STATUS_BUZZER_PIN     12               // [must be low at boot 12] Tone
+  #define STATUS_BUZZER_PIN     13               // [must be low at boot 12] Tone
 #endif
 
 // The PPS pin is a 3.3V logic input, OnStep measures time between rising edges and adjusts the internal sidereal clock frequency
 #ifndef PPS_SENSE_PIN
-  #define PPS_SENSE_PIN         AUX7_PIN         // PPS time source, GPS for example
+  #define PPS_SENSE_PIN         AUX3_PIN         // PPS time source, GPS for example
 #endif
 
 // The limit switch sense is a logic level input normally pull high (2k resistor,) shorted to ground it stops gotos/tracking
@@ -105,7 +105,7 @@
 #define AXIS2_STEP_PIN          27
 #define AXIS2_DIR_PIN           26
 #ifndef AXIS2_SENSE_HOME_PIN
-  #define AXIS2_SENSE_HOME_PIN  AUX4_PIN
+  #define AXIS2_SENSE_HOME_PIN  AUX2_PIN
 #endif
 #ifndef AXIS2_ENCODER_B_PIN
   #define AXIS2_ENCODER_B_PIN   AUX2_PIN

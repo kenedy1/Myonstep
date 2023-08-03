@@ -80,6 +80,7 @@ void Status::flashRate(int period) {
 
 // mount general status
 void Status::general() {
+  
   #if PARK_STATUS != OFF && PARK_STATUS_PIN != OFF
     digitalWriteEx(PARK_STATUS_PIN, (park.state == PS_PARKED) ? PARK_STATUS : !PARK_STATUS)
   #endif
